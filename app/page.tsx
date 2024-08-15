@@ -1,7 +1,14 @@
-import Image from "next/image";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   return (
-    <p>Hello board!</p>
+    <div>
+      <p className="text-red-400">
+        This is screen for authenticated users only
+      </p>
+      <div>
+        <UserButton />
+      </div>
+    </div>
   );
 }
