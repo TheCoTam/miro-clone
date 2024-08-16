@@ -2,6 +2,7 @@
 
 import { OrganizationSwitcher, UserButton } from "@clerk/clerk-react";
 import SearchInput from "./search-input";
+import InviteButton from "./invite-button";
 
 const Navbar = () => {
   return (
@@ -33,6 +34,7 @@ const Navbar = () => {
           }}
         />
       </div>
+      <InviteButton />
       <UserButton />
     </div>
   );
