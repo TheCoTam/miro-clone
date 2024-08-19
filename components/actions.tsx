@@ -1,6 +1,6 @@
 "use client";
 
-import { Link2, Trash2 } from "lucide-react";
+import { Link2, Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu";
 
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import ConfirmModal from "@/components/confirm-modal";
 import { Button } from "@/components/ui/button";
+import { useRenameModal } from "@/store/use-rename-modal";
 
 interface ActionsProps {
   children: React.ReactNode;
@@ -24,6 +25,7 @@ interface ActionsProps {
 }
 
 const Actions = ({ children, side, sideOffset, id, title }: ActionsProps) => {
+  const { onOpen } = useRenameModal();
   const { mutate, pending } = useApiMutation(api.board.remove);
 
   const onCopyLink = () => {
@@ -51,6 +53,13 @@ const Actions = ({ children, side, sideOffset, id, title }: ActionsProps) => {
         <DropdownMenuItem className="p-3 cursor-pointer" onClick={onCopyLink}>
           <Link2 className="w-4 h-4 mr-2" />
           Copy board link
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="p-3 cursor-pointer"
+          onClick={() => onOpen(id, title)}
+        >
+          <Pencil className="w-4 h-4 mr-2" />
+          Rename
         </DropdownMenuItem>
         <ConfirmModal
           header="Delete board?"
