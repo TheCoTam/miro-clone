@@ -11,6 +11,8 @@ const images = [
   "/baseball.gif",
   "/interaction.gif",
   "/lighthouse.gif",
+  "/wind.gif",
+  "/bell.gif",
 ];
 
 export const create = mutation({
