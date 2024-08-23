@@ -1,26 +1,25 @@
 "use client";
 
 import {
-  ClientSideSuspense,
   LiveblocksProvider,
   RoomProvider,
+  ClientSideSuspense,
 } from "@liveblocks/react/suspense";
 
 interface RoomProps {
   children: React.ReactNode;
   roomId: string;
+  fallback: NonNullable<React.ReactNode> | null;
 }
 
-const Room = ({ children, roomId }: RoomProps) => {
-  const public_key = process.env.NEXT_PUBLIC_LIVEBLOCKS_API_KEY;
+const Room = ({ children, roomId, fallback }: RoomProps) => {
   return (
     <LiveblocksProvider
-      publicApiKey={"pk_prod_DvX6ZHDEE0Z4Qwb3Gd8NMjulFNYUbs9Qt4bfIQBhHcH6pQ"}
+      // publicApiKey={process.env.NEXT_PUBLIC_LIVEBLOCKS_API_KEY!}
+      authEndpoint="/api/liveblocks-auth"
     >
       <RoomProvider id={roomId} initialPresence={{}}>
-        <ClientSideSuspense fallback={<div>Loading...</div>}>
-          {() => children}
-        </ClientSideSuspense>
+        <ClientSideSuspense fallback={fallback}>{children}</ClientSideSuspense>
       </RoomProvider>
     </LiveblocksProvider>
   );
