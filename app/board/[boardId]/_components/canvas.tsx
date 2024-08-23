@@ -10,9 +10,9 @@ interface CanvasProps {
 }
 
 const Canvas = ({ boardId }: CanvasProps) => {
-  const { name } = useSelf((me) => me.info);
+  // const { name } = useSelf((me) => me.info);
 
-  console.log(name);
+  // console.log(name);
 
   return (
     <main className="h-full w-full relative bg-neutral-100 touch-none">
