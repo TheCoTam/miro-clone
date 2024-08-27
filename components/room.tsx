@@ -17,8 +17,14 @@ const Room = ({ children, roomId, fallback }: RoomProps) => {
     <LiveblocksProvider
       // publicApiKey={process.env.NEXT_PUBLIC_LIVEBLOCKS_API_KEY!}
       authEndpoint="/api/liveblocks-auth"
+      throttle={32}
     >
-      <RoomProvider id={roomId} initialPresence={{}}>
+      <RoomProvider
+        id={roomId}
+        initialPresence={{
+          cursor: null,
+        }}
+      >
         <ClientSideSuspense fallback={fallback}>{children}</ClientSideSuspense>
       </RoomProvider>
     </LiveblocksProvider>
