@@ -26,6 +26,7 @@ const LayerPreview = memo(
             id={id}
             layer={layer}
             onLayerPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
           />
         );
       default:
