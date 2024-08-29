@@ -27,7 +27,7 @@ const Rectangle = ({
       height={height}
       fill="#000"
       strokeWidth={1}
-      stroke="transparent"
+      stroke={selectionColor || "transparent"}
     />
   );
 };
