@@ -53,6 +53,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Top + Side.Left, bound);
               }}
             />
             <rect
@@ -67,6 +68,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Top, bound);
               }}
             />
             <rect
@@ -81,6 +83,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Top + Side.Right, bound);
               }}
             />
             <rect
@@ -95,6 +98,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Right, bound);
               }}
             />
             <rect
@@ -109,6 +113,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Bottom + Side.Right, bound);
               }}
             />
             <rect
@@ -123,6 +128,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Bottom, bound);
               }}
             />
             <rect
@@ -137,6 +143,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Bottom + Side.Left, bound);
               }}
             />
             <rect
@@ -151,6 +158,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                onResizeHandlePointerDown(Side.Left, bound);
               }}
             />
           </>
