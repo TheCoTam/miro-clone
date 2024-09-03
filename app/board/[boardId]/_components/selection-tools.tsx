@@ -2,10 +2,14 @@
 
 import { memo } from "react";
 import { useMutation, useSelf } from "@liveblocks/react/suspense";
+import { Trash2 } from "lucide-react";
 
 import { useSelectionBounds } from "@/hooks/use-selection-bounds";
+import { useDeleteLayer } from "@/hooks/use-delete-layer";
 import { Camera, Color } from "@/types/canvas";
 
+import { Button } from "@/components/ui/button";
+import Hint from "@/components/hint";
 import ColorPicker from "./color-picker";
 
 interface SelectionToolsProps {
@@ -29,6 +33,8 @@ const SelectionTools = memo(
       [selection, setLastUsedColor]
     );
 
+    const deleteLayers = useDeleteLayer();
+
     const selectionBounds = useSelectionBounds();
 
     if (!selectionBounds) {
@@ -49,6 +55,13 @@ const SelectionTools = memo(
         }}
       >
         <ColorPicker onChange={setFill} />
+        <div className="flex items-center pl-2 ml-2 border-l">
+          <Hint label="Delete">
+            <Button variant="board" size="icon" onClick={deleteLayers}>
+              <Trash2 />
+            </Button>
+          </Hint>
+        </div>
       </div>
     );
   }
