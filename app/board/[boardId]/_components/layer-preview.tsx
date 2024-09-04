@@ -4,6 +4,7 @@ import { LayerType } from "@/types/canvas";
 import { useStorage } from "@liveblocks/react/suspense";
 import { memo } from "react";
 import Rectangle from "./rectangle";
+import Ellipse from "./ellipse";
 
 interface LayerPreviewProps {
   id: string;
@@ -20,6 +21,15 @@ const LayerPreview = memo(
     }
 
     switch (layer.type) {
+      case LayerType.Ellipse:
+        return (
+          <Ellipse
+            id={id}
+            layer={layer}
+            onLayerPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+          />
+        );
       case LayerType.Rectangle:
         return (
           <Rectangle
@@ -30,7 +40,7 @@ const LayerPreview = memo(
           />
         );
       default:
-        // console.warn("Unknown layer type");
+        console.warn("Unknown layer type");
         return null;
     }
   }
