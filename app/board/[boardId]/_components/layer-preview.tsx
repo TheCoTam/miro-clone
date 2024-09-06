@@ -1,12 +1,16 @@
 "use client";
 
-import { LayerType } from "@/types/canvas";
-import { useStorage } from "@liveblocks/react/suspense";
 import { memo } from "react";
+import { useStorage } from "@liveblocks/react/suspense";
+
+import { LayerType } from "@/types/canvas";
+import { colorToCss } from "@/lib/utils";
+
 import Rectangle from "./rectangle";
 import Ellipse from "./ellipse";
 import Text from "./text";
 import Note from "./note";
+import Path from "./path";
 
 interface LayerPreviewProps {
   id: string;
@@ -23,6 +27,18 @@ const LayerPreview = memo(
     }
 
     switch (layer.type) {
+      case LayerType.Path:
+        return (
+          <Path
+            key={id}
+            points={layer.points}
+            onPointerDown={(e) => onLayerPointerDown(e, id)}
+            x={layer.x}
+            y={layer.y}
+            fill={layer.fill ? colorToCss(layer.fill) : "#000"}
+            stroke={selectionColor}
+          />
+        );
       case LayerType.Note:
         return (
           <Note
